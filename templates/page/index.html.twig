@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% set current_page = app.request.get('_route') %}
+{% set page_name = current_page | split('_') %}
+{% set page_name = page_name[page_name|length() - 1] %}
+
+{% block title %}Page {{ page_name }}{% endblock %}
+
+{% block body %}
+    <h1>{{ page_name | capitalize }}</h1>
+
+    {% if 'index' == page_name %}
+        <p>
+            Cette page liste les derniers commentaires créés
+        </p>
+    {% else %}
+        <p>
+            Voici la liste l'ensemble des commentaires de la page {{ page_name }}
+        </p>
+     {% endif %}
+    <div class="js-comment-wrapper"
+         data-current-page="{{ page_name }}"
+         data-is-authenticated="{{ app.user ? 'true' : 'false' }}"
+         data-user="{{ app.user|serialize(format = 'json') }}"
+    >
+        <!-- ... -->
+    </div>
+{% endblock %}

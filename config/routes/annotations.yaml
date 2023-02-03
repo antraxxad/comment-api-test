@@ -1,0 +1,10 @@
+controllers:
+    resource: ../../src/Controller/
+    type: annotation
+comment_controllers:
+    resource: ../../src/Comment/Controller/
+    type: annotation
+
+kernel:
+    resource: ../../src/Kernel.php
+    type: annotation
